@@ -1,13 +1,13 @@
 import { useState, type ChangeEvent } from "react";
 import type { Todo } from "../interfaces";
 import { useTodoStore } from "../store";
-import { useShallow } from "zustand/shallow";
 
 function TodoItem({ todo }: { todo: Todo }) {
   const [inputValue, setInputValue] = useState(todo.content);
-  const { deleteTodo, updateTodo } = useTodoStore(
-    useShallow(({ deleteTodo, updateTodo }) => ({ deleteTodo, updateTodo }))
-  );
+
+  const deleteTodo = useTodoStore(({ deleteTodo }) => deleteTodo);
+  const updateTodo = useTodoStore(({ updateTodo }) => updateTodo);
+
   function handleValidation(editedTodo: Todo) {
     updateTodo(editedTodo);
   }

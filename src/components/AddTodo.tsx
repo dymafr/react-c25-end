@@ -15,6 +15,7 @@ function AddTodo() {
       done: false,
       edit: false,
     });
+    setContent("");
   }
 
   return (
